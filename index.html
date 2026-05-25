@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Simmi Weds Masum — Royal Muslim Wedding Invitation 2026 · Ansari Family · Saran, Bihar">
+<title>✿ Simmi Weds Masum ✿</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════ */
+:root {
+  --blush:       #F4DDD0;
+  --blush-deep:  #EACAB8;
+  --blush-dark:  #CFA08A;
+  --rose:        #B85C56;
+  --rose-light:  #D4908A;
+  --rose-pale:   rgba(184,92,86,0.12);
+  --mauve:       #8E5F6B;
+  --mauve-light: #C9A0AC;
+  --antique:     #C4A24A;
+  --gold:        #D4AF37;
+  --gold-light:  #EDD06A;
+  --gold-glow:   rgba(212,175,55,0.25);
+  --ivory:       #FDF7EF;
+  --ivory-warm:  #F9EFE2;
+  --cream:       #F5E9D8;
+  --parchment:   #EEE0C8;
+  --brown:       #3D2018;
+  --brown-soft:  #7A5248;
+  --brown-mid:   #5A3228;
+  --shadow-rose: 0 8px 40px rgba(184,92,86,0.12);
+  --shadow-gold: 0 4px 20px rgba(212,175,55,0.15);
+  --ff-title:    'Italiana', serif;
+  --ff-body:     'Bodoni Moda', serif;
+  --ff-cormo:    'Cormorant', serif;
+  --ff-arabic:   'Scheherazade New', serif;
+  --ff-urdu:     'Noto Nastaliq Urdu', serif;
+  --radius:      2px;
+  --max-w:       1060px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body {
+  background: var(--ivory);
+  color: var(--brown);
+  font-family: var(--ff-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+::selection { background:rgba(184,92,86,0.18); color:var(--rose); }
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--ivory-warm); }
+::-webkit-scrollbar-thumb { background:var(--rose-light); border-radius:2px; }
+
+/* ═══════════════════════════════════════════════════
+   CURSOR
+═══════════════════════════════════════════════════ */
+#cur { position:fixed;top:0;left:0;width:10px;height:10px;background:var(--rose);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(184,92,86,0.5);transition:transform .07s; }
+#cur2 { position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid rgba(184,92,86,0.3);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all .2s cubic-bezier(.25,.46,.45,.94); }
+@media(max-width:768px){#cur,#cur2{display:none}}
+
+/* ═══════════════════════════════════════════════════
+   MUSIC BUTTON
+═══════════════════════════════════════════════════ */
+#musicBtn {
+  position:fixed;bottom:1.8rem;right:1.5rem;z-index:9500;
+  width:54px;height:54px;border-radius:50%;
+  background:rgba(253,247,239,0.92);
+  border:1px solid rgba(184,92,86,0.28);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(14px);
+  box-shadow:var(--shadow-rose);
+  transition:all .3s ease;
+  -webkit-tap-highlight-color:transparent;
+  animation:musicPulse 3s ease-in-out infinite;
+}
+@keyframes musicPulse{0%,100%{box-shadow:0 4px 20px rgba(184,92,86,.12),0 0 0 0 rgba(184,92,86,.08)}50%{box-shadow:0 4px 24px rgba(184,92,86,.2),0 0 0 10px rgba(184,92,86,0)}}
+#musicBtn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(184,92,86,.28);}
+#musicBtn svg{width:22px;height:22px;stroke:var(--rose);fill:none;stroke-width:1.5;}
+
+/* ═══════════════════════════════════════════════════
+   LOADER — Mosque + Rose Animation
+═══════════════════════════════════════════════════ */
+#loader {
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(160deg,#FDF3EA 0%,#F9EBD8 50%,#F4DDD0 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.5rem;overflow:hidden;
+}
+
+/* Mosque SVG in loader */
+.loader-mosque {
+  width:clamp(220px,55vw,360px);
+  opacity:0;
+  animation:mosqueReveal 1s ease forwards .2s;
+}
+@keyframes mosqueReveal{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+
+/* Rotating rose above mosque */
+.loader-rose-wrap {
+  position:relative;
+  width:60px;height:60px;
+  margin-bottom:.5rem;
+}
+.loader-rose {
+  animation:roseSpinPulse 6s linear infinite;
+  position:absolute;inset:0;
+}
+@keyframes roseSpinPulse{
+  0%{transform:rotate(0deg) scale(1)}
+  50%{transform:rotate(180deg) scale(1.1)}
+  100%{transform:rotate(360deg) scale(1)}
+}
+.loader-rose-center {
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:14px;height:14px;
+  background:var(--antique);
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(196,162,74,0.5);
+}
+
+.loader-title {
+  font-family:var(--ff-title);
+  font-size:clamp(1.6rem,5vw,2.8rem);
+  color:var(--rose);
+  letter-spacing:.1em;
+  text-align:center;
+  opacity:0;
+  animation:fadeInUp .9s ease forwards .6s;
+}
+.loader-subtitle {
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.72rem,1.8vw,.9rem);
+  letter-spacing:.4em;color:var(--rose-light);
+  text-transform:uppercase;text-align:center;
+  opacity:0;animation:fadeInUp .9s ease forwards 1s;
+}
+.loader-bar-wrap {
+  width:clamp(180px,40vw,240px);height:1px;
+  background:rgba(184,92,86,0.15);overflow:hidden;
+}
+.loader-bar {
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--rose-light),var(--antique),var(--rose-light));
+  animation:lbFill 2.6s ease forwards .5s;
+}
+@keyframes lbFill{to{width:100%}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* Floating petals in loader */
+.loader-petal {
+  position:absolute;pointer-events:none;
+  animation:loaderPetal linear infinite;
+  opacity:0;
+}
+@keyframes loaderPetal{
+  0%{transform:translateY(110vh) rotate(0deg);opacity:0}
+  5%{opacity:.7}
+  95%{opacity:.4}
+  100%{transform:translateY(-10vh) rotate(360deg);opacity:0}
+}
+
+/* ═══════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════ */
+#hero {
+  min-height:100vh;position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:clamp(5rem,10vw,9rem) clamp(1.5rem,5vw,3rem);
+  overflow:hidden;
+}
+
+/* Canvas background */
+#heroCanvas {
+  position:absolute;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+
+/* Warm gradient overlay */
+.hero-overlay {
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 100%,rgba(244,221,208,.6) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 30%,rgba(244,221,208,.3) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 20%,rgba(244,221,208,.3) 0%,transparent 60%);
+}
+
+/* Animated SVG frame */
+.hero-frame {position:absolute;inset:10px;z-index:2;pointer-events:none;}
+.hero-frame svg{width:100%;height:100%;overflow:visible;}
+
+/* Hero content */
+.hero-inner {position:relative;z-index:5;max-width:820px;width:100%;}
+
+.h-bismillah-ar {
+  font-family:var(--ff-arabic);
+  font-size:clamp(1.4rem,4.5vw,3rem);
+  color:var(--antique);
+  text-shadow:0 0 25px rgba(196,162,74,0.35);
+  line-height:1.8;display:block;
+  opacity:0;transform:translateY(16px);
+}
+.h-bismillah-en {
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.67rem,1.6vw,.85rem);
+  letter-spacing:.3em;color:var(--rose-light);
+  text-transform:uppercase;display:block;margin-top:.3rem;
+  opacity:0;
+}
+.h-div {
+  display:flex;align-items:center;justify-content:center;
+  gap:.9rem;margin:clamp(1.2rem,2.5vw,2rem) auto;
+  opacity:0;
+}
+.h-div-line{width:clamp(50px,10vw,100px);height:1px;background:linear-gradient(90deg,transparent,var(--rose-light),transparent);}
+.h-div-bloom{color:var(--rose);font-size:1rem;display:inline-block;animation:bloom 4s ease-in-out infinite;}
+@keyframes bloom{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(10deg)}}
+
+.h-bride {
+  font-family:var(--ff-title);
+  font-size:clamp(3rem,10vw,8rem);
+  color:var(--rose);line-height:.92;letter-spacing:.02em;
+  opacity:0;transform:scale(.93);
+  display:block;
+}
+.h-weds {
+  font-family:var(--ff-cormo);font-style:italic;font-weight:300;
+  font-size:clamp(1rem,3.5vw,2.2rem);
+  color:var(--antique);letter-spacing:.45em;
+  display:block;margin:.5rem 0;
+  opacity:0;
+}
+.h-groom {
+  font-family:var(--ff-title);
+  font-size:clamp(2.4rem,7vw,5.8rem);
+  color:var(--brown-mid);line-height:1;letter-spacing:.02em;
+  opacity:0;transform:scale(.93);
+  display:block;
+}
+.h-urdu {
+  display:flex;align-items:center;justify-content:center;
+  gap:1rem;flex-wrap:wrap;margin:clamp(1rem,2vw,1.8rem) 0;
+  opacity:0;transform:translateY(15px);
+}
+.h-urdu-name {
+  font-family:var(--ff-urdu);
+  font-size:clamp(1rem,2.8vw,1.8rem);
+  color:var(--mauve);line-height:2.2;
+  text-shadow:0 0 10px rgba(142,95,107,0.15);
+}
+.h-urdu-sep{color:var(--antique);font-size:1.3rem;}
+
+.h-badge {
+  display:inline-flex;align-items:center;gap:.7rem;
+  border:1px solid rgba(184,92,86,0.22);
+  padding:.65rem 2rem;
+  background:rgba(253,247,239,.6);
+  backdrop-filter:blur(8px);
+  opacity:0;
+}
+.h-badge span {
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.73rem,1.7vw,.9rem);
+  color:var(--rose);letter-spacing:.15em;
+}
+
+/* ═══════════════════════════════════════════════════
+   SECTION SHARED
+═══════════════════════════════════════════════════ */
+section{position:relative;overflow:hidden;padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);}
+.sec-wrap{max-width:var(--max-w);margin:0 auto;}
+.sec-head{text-align:center;margin-bottom:clamp(2.5rem,5vw,4.5rem);}
+.sec-eye {
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.66rem,1.4vw,.8rem);
+  letter-spacing:.5em;color:var(--rose-light);
+  text-transform:uppercase;display:block;margin-bottom:.7rem;
+}
+.sec-ar {
+  font-family:var(--ff-arabic);
+  font-size:clamp(1.2rem,3vw,2.1rem);
+  color:var(--antique);
+  text-shadow:0 0 15px rgba(196,162,74,.2);
+  display:block;margin-bottom:.5rem;line-height:1.8;
+}
+.sec-title {
+  font-family:var(--ff-title);
+  font-size:clamp(1.9rem,5vw,3.4rem);
+  color:var(--rose);letter-spacing:.04em;font-weight:400;
+}
+.sep {
+  display:flex;align-items:center;justify-content:center;
+  gap:.8rem;margin:1.2rem auto;max-width:240px;
+}
+.sep-l{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--antique),transparent);}
+.sep-d{width:6px;height:6px;background:var(--antique);transform:rotate(45deg);flex-shrink:0;}
+
+/* BG textures */
+.bg-ivory{background:var(--ivory);}
+.bg-cream{background:linear-gradient(135deg,#FCF1E5 0%,#F6E9D5 50%,#FCF1E5 100%);}
+.bg-parch{background:linear-gradient(135deg,#F9EEE0 0%,#F2E4CF 50%,#F9EEE0 100%);}
+
+/* ═══════════════════════════════════════════════════
+   EVENTS
+═══════════════════════════════════════════════════ */
+#events{background:var(--ivory-warm);}
+
+/* Countdown */
+.cd-row{display:flex;justify-content:center;gap:clamp(.8rem,2.5vw,1.8rem);flex-wrap:wrap;margin-bottom:3.5rem;}
+.cd-unit{
+  background:linear-gradient(145deg,rgba(253,247,239,.95),rgba(249,237,226,.9));
+  border:1px solid rgba(184,92,86,.18);
+  padding:1.2rem 1.4rem;text-align:center;min-width:82px;
+  position:relative;
+  box-shadow:0 2px 16px rgba(184,92,86,.07);
+}
+.cd-unit::after{content:'';position:absolute;inset:3px;border:1px solid rgba(196,162,74,.1);pointer-events:none;}
+.cd-n{font-family:var(--ff-title);font-size:clamp(2rem,5vw,3rem);color:var(--rose);display:block;line-height:1;}
+.cd-l{font-family:var(--ff-cormo);font-style:italic;font-size:.63rem;letter-spacing:.3em;color:var(--rose-light);text-transform:uppercase;display:block;margin-top:.3rem;}
+
+/* Event grid */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1.5rem;}
+
+.ev-card{
+  background:linear-gradient(158deg,rgba(253,247,239,.97) 0%,rgba(249,237,226,.92) 100%);
+  border:1px solid rgba(184,92,86,.14);
+  padding:2rem 1.7rem;
+  position:relative;overflow:hidden;text-align:center;
+  opacity:0;transform:translateY(32px);
+  transition:box-shadow .3s,transform .3s;
+  box-shadow:0 2px 18px rgba(184,92,86,.06);
+  border-radius:var(--radius);
+}
+.ev-card:hover{transform:translateY(-5px)!important;box-shadow:0 14px 45px rgba(184,92,86,.14);}
+.ev-card::before,.ev-card::after{content:'✿';position:absolute;color:rgba(184,92,86,.1);font-size:2.2rem;pointer-events:none;line-height:1;}
+.ev-card::before{top:-4px;left:4px;}
+.ev-card::after{bottom:-4px;right:4px;transform:rotate(180deg);}
+
+.ev-shimmer{position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(196,162,74,.07),transparent);transform:skewX(-15deg);transition:left .7s ease;}
+.ev-card:hover .ev-shimmer{left:160%;}
+
+.ev-nbg{font-family:var(--ff-title);font-size:5.5rem;color:rgba(184,92,86,.05);position:absolute;top:-.5rem;right:.5rem;line-height:1;user-select:none;}
+.ev-ico{width:46px;height:46px;border:1px solid rgba(184,92,86,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;background:rgba(253,247,239,.9);}
+.ev-ico svg{width:21px;height:21px;stroke:var(--rose);fill:none;stroke-width:1.5;}
+.ev-lbl{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.63rem,1.3vw,.75rem);letter-spacing:.35em;color:var(--rose-light);text-transform:uppercase;display:block;margin-bottom:.4rem;}
+.ev-ar{font-family:var(--ff-arabic);font-size:clamp(.95rem,2.2vw,1.35rem);color:var(--antique);display:block;margin-bottom:.3rem;}
+.ev-name{font-family:var(--ff-title);font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--rose);letter-spacing:.04em;display:block;margin-bottom:.8rem;}
+.ev-date{font-family:var(--ff-body);font-weight:500;font-size:clamp(.88rem,1.9vw,1.05rem);color:var(--brown);display:block;margin-bottom:.2rem;}
+.ev-time{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.75rem,1.6vw,.88rem);color:var(--brown-soft);display:block;}
+.ev-venue{font-family:var(--ff-cormo);font-size:clamp(.65rem,1.3vw,.75rem);color:rgba(184,92,86,.5);margin-top:.4rem;display:block;}
+.ev-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--rose-light),transparent);opacity:0;transition:opacity .3s;}
+.ev-card:hover .ev-bar{opacity:1;}
+
+/* Nikah card special */
+.ev-card.nikah{border-color:rgba(184,92,86,.35);box-shadow:0 4px 30px rgba(184,92,86,.12);}
+.ev-card.nikah .ev-ar{color:var(--rose);}
+.ev-card.nikah .ev-name{font-size:clamp(1.3rem,3vw,1.9rem);}
+.ev-card.nikah .ev-bar{opacity:.5;background:linear-gradient(90deg,transparent,var(--rose),transparent);}
+
+/* ═══════════════════════════════════════════════════
+   FAMILY SECTION
+═══════════════════════════════════════════════════ */
+#family{background:var(--ivory);}
+
+.family-top-text{
+  text-align:center;margin-bottom:clamp(2rem,4vw,3.5rem);
+  opacity:0;
+}
+.ftt-blessing{
+  font-family:var(--ff-arabic);
+  font-size:clamp(1.1rem,3vw,1.8rem);
+  color:var(--antique);
+  text-shadow:0 0 12px rgba(196,162,74,.2);
+  display:block;margin-bottom:.5rem;
+}
+.ftt-urdu{
+  font-family:var(--ff-urdu);
+  font-size:clamp(.85rem,2vw,1.1rem);
+  color:var(--mauve-light);
+  display:block;margin-bottom:.5rem;direction:rtl;
+}
+.ftt-en{
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.72rem,1.6vw,.85rem);
+  letter-spacing:.35em;color:var(--rose-light);
+  text-transform:uppercase;
+}
+
+.family-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem);max-width:900px;margin:0 auto;}
+@media(max-width:620px){.family-grid{grid-template-columns:1fr;}}
+
+.fcard{
+  background:linear-gradient(148deg,rgba(253,247,239,.97) 0%,rgba(245,232,218,.93) 100%);
+  border:1px solid rgba(184,92,86,.16);
+  padding:clamp(2rem,4vw,2.8rem);text-align:center;
+  position:relative;overflow:hidden;opacity:0;
+  box-shadow:var(--shadow-rose);border-radius:var(--radius);
+}
+.fcard-bride{border-color:rgba(184,92,86,.32);box-shadow:0 8px 45px rgba(184,92,86,.14);}
+.fcorner{position:absolute;width:18px;height:18px;border-color:rgba(184,92,86,.28);border-style:solid;}
+.fcorner.tl{top:7px;left:7px;border-width:1px 0 0 1px;}
+.fcorner.tr{top:7px;right:7px;border-width:1px 1px 0 0;}
+.fcorner.bl{bottom:7px;left:7px;border-width:0 0 1px 1px;}
+.fcorner.br{bottom:7px;right:7px;border-width:0 1px 1px 0;}
+.fcard-ico{font-size:2.2rem;display:block;margin-bottom:1rem;}
+.fcard-role{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.63rem,1.4vw,.77rem);letter-spacing:.45em;color:var(--rose-light);text-transform:uppercase;display:block;margin-bottom:.8rem;}
+.fcard-urdu{font-family:var(--ff-urdu);font-size:clamp(1rem,2.6vw,1.8rem);color:var(--mauve);text-shadow:0 0 8px rgba(142,95,107,.12);display:block;line-height:2.2;margin-bottom:.2rem;}
+.fcard-eng{font-family:var(--ff-title);font-size:clamp(1.1rem,2.6vw,1.8rem);color:var(--rose);letter-spacing:.04em;display:block;margin-bottom:1.2rem;}
+.fcard-info{font-family:var(--ff-cormo);font-size:clamp(.8rem,1.8vw,.95rem);color:var(--brown-soft);line-height:2.1;}
+.fcard-info b{color:var(--rose-light);font-style:italic;font-weight:400;}
+.fcard-loc{color:rgba(184,92,86,.45);font-size:.82rem;display:block;margin-top:.5rem;font-style:italic;}
+
+/* Bride family scroll card */
+.bride-fam{
+  max-width:720px;margin:clamp(2rem,4vw,3rem) auto 0;
+  background:linear-gradient(148deg,rgba(253,247,239,.98),rgba(248,238,225,.95));
+  border:1px solid rgba(184,92,86,.18);
+  padding:clamp(2rem,5vw,3.5rem);text-align:center;
+  position:relative;opacity:0;
+  box-shadow:var(--shadow-rose);
+}
+.bf-corner{position:absolute;width:22px;height:22px;border-color:rgba(196,162,74,.4);border-style:solid;}
+.bf-corner.tl{top:8px;left:8px;border-width:1.5px 0 0 1.5px;}
+.bf-corner.tr{top:8px;right:8px;border-width:1.5px 1.5px 0 0;}
+.bf-corner.bl{bottom:8px;left:8px;border-width:0 0 1.5px 1.5px;}
+.bf-corner.br{bottom:8px;right:8px;border-width:0 1.5px 1.5px 0;}
+.bf-love{
+  font-family:var(--ff-title);
+  font-size:clamp(1.4rem,3.5vw,2.3rem);
+  color:var(--rose);letter-spacing:.04em;display:block;margin-bottom:.4rem;
+}
+.bf-welcome{
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.8rem,1.8vw,1rem);
+  color:var(--brown-soft);display:block;margin-bottom:.3rem;
+}
+.bf-from{
+  font-family:var(--ff-cormo);font-style:italic;
+  font-size:clamp(.65rem,1.4vw,.78rem);
+  letter-spacing:.4em;color:var(--rose-light);
+  text-transform:uppercase;display:block;margin-bottom:1.8rem;
+}
+.patriarch{font-family:var(--ff-body);font-weight:500;font-size:clamp(.88rem,1.9vw,1.05rem);color:var(--brown);display:block;margin-bottom:.4rem;}
+.patriarch.late{color:var(--brown-soft);font-style:italic;font-weight:400;}
+.patriarch.late::before{content:'Late ';}
+.patriarch.main{font-size:clamp(1rem,2.2vw,1.2rem);color:var(--rose);font-weight:700;}
+.bf-divider{border:none;border-top:1px solid rgba(184,92,86,.1);margin:1.5rem 0;}
+.bf-member-lbl{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.63rem,1.3vw,.73rem);letter-spacing:.38em;color:rgba(184,92,86,.4);text-transform:uppercase;display:block;margin-bottom:1rem;}
+.names-flex{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;justify-content:center;}
+.n-chip{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.8rem,1.7vw,.95rem);color:var(--brown-soft);position:relative;padding:0 .4rem;}
+.n-chip::after{content:'·';position:absolute;right:-.65rem;color:rgba(184,92,86,.3);}
+.n-chip:last-child::after{display:none;}
+.bf-dua{font-family:var(--ff-arabic);font-size:clamp(.9rem,2vw,1.2rem);color:var(--antique);display:block;margin-top:1.5rem;text-shadow:0 0 8px rgba(196,162,74,.15);}
+
+/* ═══════════════════════════════════════════════════
+   QUR'AN
+═══════════════════════════════════════════════════ */
+#quran{background:var(--ivory-warm);text-align:center;}
+
+.qframe{
+  max-width:760px;margin:0 auto 2.5rem;
+  padding:clamp(2rem,5vw,3.8rem);
+  background:linear-gradient(148deg,rgba(253,247,239,.99),rgba(248,238,225,.96));
+  border:1px solid rgba(184,92,86,.18);
+  position:relative;opacity:0;
+  box-shadow:var(--shadow-rose);
+}
+.qframe::before,.qframe::after{content:'';position:absolute;width:26px;height:26px;border-color:var(--antique);border-style:solid;}
+.qframe::before{top:-1px;left:-1px;border-width:2px 0 0 2px;}
+.qframe::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
+.qinner{border:1px solid rgba(196,162,74,.12);padding:clamp(1.5rem,3vw,2.5rem);}
+.qar{font-family:var(--ff-arabic);font-size:clamp(1.1rem,3.5vw,2.1rem);color:var(--antique);line-height:2.2;text-shadow:0 0 18px rgba(196,162,74,.22);display:block;margin-bottom:1.2rem;}
+.qtrans{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.8rem,1.8vw,1rem);color:var(--brown-soft);line-height:2;display:block;margin-bottom:.6rem;}
+.qref{font-family:var(--ff-title);font-size:clamp(.63rem,1.3vw,.77rem);color:var(--rose-light);letter-spacing:.2em;}
+
+.dua-row{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:3rem;}
+.dcard{flex:1;min-width:min(100%,255px);max-width:340px;background:linear-gradient(135deg,rgba(253,247,239,.95),rgba(245,232,218,.88));border:1px solid rgba(184,92,86,.13);padding:2rem;text-align:center;opacity:0;border-radius:var(--radius);}
+.dcard-ar{font-family:var(--ff-arabic);font-size:clamp(.95rem,2.2vw,1.3rem);color:var(--antique);line-height:2;display:block;margin-bottom:.7rem;text-shadow:0 0 8px rgba(196,162,74,.15);}
+.dcard-ur{font-family:var(--ff-urdu);font-size:clamp(.8rem,1.8vw,1rem);color:var(--mauve);display:block;line-height:2.2;margin-bottom:.5rem;direction:rtl;}
+.dcard-en{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.7rem,1.5vw,.84rem);color:var(--brown-soft);line-height:1.9;}
+
+/* ═══════════════════════════════════════════════════
+   INVITATION
+═══════════════════════════════════════════════════ */
+#invitation{background:var(--ivory);text-align:center;}
+.inv-card{
+  max-width:800px;margin:0 auto;
+  background:linear-gradient(155deg,rgba(253,247,239,.99),rgba(248,238,225,.97));
+  border:1px solid rgba(184,92,86,.2);
+  padding:clamp(2.5rem,6vw,5rem);
+  position:relative;opacity:0;
+  box-shadow:0 10px 60px rgba(184,92,86,.1);
+}
+.igem{position:absolute;width:10px;height:10px;background:var(--antique);transform:rotate(45deg);box-shadow:0 0 7px rgba(196,162,74,.4);}
+.igem.tl{top:-5px;left:-5px;} .igem.tr{top:-5px;right:-5px;}
+.igem.bl{bottom:-5px;left:-5px;} .igem.br{bottom:-5px;right:-5px;}
+.inv-ar{font-family:var(--ff-arabic);font-size:clamp(1.1rem,3vw,1.9rem);color:var(--antique);text-shadow:0 0 12px rgba(196,162,74,.2);display:block;margin-bottom:.5rem;}
+.inv-h{font-family:var(--ff-title);font-size:clamp(1.9rem,4.5vw,3.2rem);color:var(--rose);letter-spacing:.05em;font-weight:400;display:block;margin-bottom:.4rem;}
+.inv-sub{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.7rem,1.5vw,.82rem);letter-spacing:.42em;color:var(--rose-light);text-transform:uppercase;display:block;margin-bottom:2rem;}
+.inv-body{font-family:var(--ff-body);font-size:clamp(.82rem,1.8vw,.95rem);color:var(--brown-soft);line-height:2.2;max-width:520px;margin:0 auto 2rem;font-style:italic;}
+.inv-body strong{color:var(--rose);font-style:normal;}
+.inv-venue{background:rgba(184,92,86,.04);border:1px solid rgba(184,92,86,.1);padding:1.2rem 2rem;display:inline-block;margin-bottom:1.5rem;}
+.inv-venue-name{font-family:var(--ff-body);font-size:clamp(.88rem,1.9vw,1rem);color:var(--brown);font-weight:500;display:block;margin-bottom:.2rem;}
+.inv-venue-time{font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.75rem,1.6vw,.88rem);color:var(--rose-light);}
+.inv-closing{font-family:var(--ff-arabic);font-size:clamp(.9rem,2vw,1.2rem);color:var(--antique);margin-top:1.5rem;display:block;text-shadow:0 0 8px rgba(196,162,74,.15);}
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════ */
+footer{text-align:center;padding:4rem 2rem;background:linear-gradient(135deg,#F8EBD8,#F2DDD0);border-top:1px solid rgba(184,92,86,.15);}
+.ft-ar{font-family:var(--ff-arabic);font-size:clamp(1.1rem,2.6vw,1.8rem);color:var(--antique);margin-bottom:1rem;display:block;}
+.ft-names{font-family:var(--ff-title);font-size:clamp(1rem,2.3vw,1.5rem);color:var(--rose);letter-spacing:.06em;display:block;}
+.ft-div{margin:.8rem 0;color:rgba(184,92,86,.4);font-size:1.1rem;}
+.ft-sub{font-family:var(--ff-cormo);font-style:italic;font-size:.78rem;color:var(--brown-soft);letter-spacing:.18em;display:block;}
+.ft-love{font-family:var(--ff-cormo);font-style:italic;font-size:.7rem;color:rgba(184,92,86,.35);margin-top:.7rem;display:block;letter-spacing:.2em;}
+
+/* ═══════════════════════════════════════════════════
+   REVEAL
+═══════════════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(35px);}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE FINE-TUNE
+═══════════════════════════════════════════════════ */
+@media(max-width:480px){
+  .hero-frame{inset:6px;}
+  .h-badge{padding:.55rem 1.2rem;}
+  .ev-card::before,.ev-card::after{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- MUSIC BUTTON -->
+<button id="musicBtn" aria-label="Toggle Islamic Music">
+  <svg id="mIco" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
+</button>
+
+<!-- ═══════ LOADER ═══════ -->
+<div id="loader">
+
+  <!-- Floating petals in loader — generated by JS -->
+
+  <!-- Rotating rose -->
+  <div class="loader-rose-wrap">
+    <svg class="loader-rose" width="60" height="60" viewBox="0 0 60 60">
+      <g>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.65)" transform="rotate(0 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.50)" transform="rotate(45 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.65)" transform="rotate(90 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.50)" transform="rotate(135 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.65)" transform="rotate(180 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.50)" transform="rotate(225 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.65)" transform="rotate(270 30 30)"/>
+        <ellipse cx="30" cy="12" rx="5" ry="11" fill="rgba(184,92,86,.50)" transform="rotate(315 30 30)"/>
+      </g>
+    </svg>
+    <div class="loader-rose-center"></div>
+  </div>
+
+  <!-- Mosque SVG -->
+  <svg class="loader-mosque" viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <defs>
+      <linearGradient id="mqGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#C4A24A" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#B85C56" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="mqSky" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#F4DDD0" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#EEE0C8" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="mqGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <!-- Sky glow behind dome -->
+    <ellipse cx="280" cy="75" rx="120" ry="50" fill="url(#mqSky)" opacity="0.8"/>
+    <!-- Main mosque body -->
+    <path d="M20,200 L20,165 L60,165 L60,155 L80,155 L80,165 L110,165 L110,138 L125,115 Q140,90 155,115 L168,138 L168,165 
+    L190,165 L190,195
+    M200,195 L200,165 L218,165 L218,155 L238,155 L238,165
+    L248,165 L248,148 L254,130 L260,108 Q272,70 280,60 Q288,70 300,108 L306,130 L312,148 L312,165 L322,165 L322,155 L342,155 L342,165 L360,165 L360,195
+    M370,195 L370,165 L392,165 L392,138 L405,115 Q420,90 435,115 L448,138 L448,165 L480,165 L480,155 L500,155 L500,165 L540,165 L540,200"
+    stroke="url(#mqGrad)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+    <!-- Central dome filled -->
+    <path d="M254,130 L260,108 Q272,70 280,60 Q288,70 300,108 L306,130 Z" fill="rgba(196,162,74,0.15)" stroke="rgba(196,162,74,0.5)" stroke-width="1"/>
+    <!-- Small domes -->
+    <path d="M110,138 L125,115 Q140,90 155,115 L168,138 Z" fill="rgba(184,92,86,.08)" stroke="rgba(184,92,86,.3)" stroke-width="0.8"/>
+    <path d="M392,138 L405,115 Q420,90 435,115 L448,138 Z" fill="rgba(184,92,86,.08)" stroke="rgba(184,92,86,.3)" stroke-width="0.8"/>
+    <!-- Minarets -->
+    <line x1="260" y1="60" x2="260" y2="165" stroke="rgba(196,162,74,.35)" stroke-width="1"/>
+    <line x1="300" y1="60" x2="300" y2="165" stroke="rgba(196,162,74,.35)" stroke-width="1"/>
+    <!-- Stars atop minarets -->
+    <text x="257" y="52" font-size="10" fill="rgba(196,162,74,0.8)" filter="url(#mqGlow)">☽</text>
+    <text x="297" y="52" font-size="10" fill="rgba(196,162,74,0.8)" filter="url(#mqGlow)">☽</text>
+    <!-- Ground line -->
+    <line x1="0" y1="200" x2="560" y2="200" stroke="rgba(184,92,86,.2)" stroke-width="0.8"/>
+    <!-- Animated glow dot on dome top -->
+    <circle cx="280" cy="58" r="3" fill="rgba(196,162,74,0.7)" filter="url(#mqGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+
+  <div class="loader-title">Simmi Weds Masum</div>
+  <div class="loader-subtitle">Simmi Wedding Invitation</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-overlay"></div>
+
+  <!-- Animated SVG frame border -->
+  <div class="hero-frame">
+    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Animated dashed outer border -->
+      <rect x=".4" y=".4" width="99.2" height="99.2" fill="none" stroke="rgba(184,92,86,0.18)" stroke-width=".35" stroke-dasharray="5 9" vector-effect="non-scaling-stroke">
+        <animate attributeName="stroke-dashoffset" from="0" to="-70" dur="14s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Floral corner marks -->
+      <text x=".5" y="4" font-size="4" fill="rgba(184,92,86,0.35)" vector-effect="non-scaling-stroke">✿</text>
+      <text x="95" y="4" font-size="4" fill="rgba(184,92,86,0.35)" vector-effect="non-scaling-stroke">✿</text>
+      <text x=".5" y="100" font-size="4" fill="rgba(184,92,86,0.35)" vector-effect="non-scaling-stroke">✿</text>
+      <text x="95" y="100" font-size="4" fill="rgba(184,92,86,0.35)" vector-effect="non-scaling-stroke">✿</text>
+      <!-- Gold bracket corners -->
+      <path d="M2,7 L2,2 L7,2" fill="none" stroke="rgba(196,162,74,0.65)" stroke-width=".9" vector-effect="non-scaling-stroke"/>
+      <path d="M93,2 L98,2 L98,7" fill="none" stroke="rgba(196,162,74,0.65)" stroke-width=".9" vector-effect="non-scaling-stroke"/>
+      <path d="M98,93 L98,98 L93,98" fill="none" stroke="rgba(196,162,74,0.65)" stroke-width=".9" vector-effect="non-scaling-stroke"/>
+      <path d="M7,98 L2,98 L2,93" fill="none" stroke="rgba(196,162,74,0.65)" stroke-width=".9" vector-effect="non-scaling-stroke"/>
+      <!-- Inner subtle frame -->
+      <rect x="3" y="3" width="94" height="94" fill="none" stroke="rgba(196,162,74,0.08)" stroke-width=".3" vector-effect="non-scaling-stroke"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <!-- Bismillah -->
+    <span class="h-bismillah-ar" id="hbis">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>
+    <span class="h-bismillah-en" id="hbisen">In the name of Allah — The Most Gracious, The Most Merciful</span>
+
+    <!-- Divider 1 -->
+    <div class="h-div" id="hdiv1">
+      <div class="h-div-line"></div>
+      <span class="h-div-bloom">✿</span>
+      <span class="h-div-bloom" style="color:var(--antique);animation-delay:.6s">❋</span>
+      <span class="h-div-bloom" style="animation-delay:1.2s">✿</span>
+      <div class="h-div-line"></div>
+    </div>
+
+    <!-- Bride name -->
+    <span class="h-bride" id="hbride">Simmi</span>
+    <span class="h-weds" id="hweds">weds</span>
+    <span class="h-groom" id="hgroom">Masum</span>
+
+    <!-- Urdu names -->
+    <div class="h-urdu" id="hurdu">
+      <span class="h-urdu-name">سمی خاتون</span>
+      <span class="h-urdu-sep">✿</span>
+      <span class="h-urdu-name">معصوم رضا</span>
+    </div>
+
+    <!-- Divider 2 -->
+    <div class="h-div" id="hdiv2">
+      <div class="h-div-line"></div>
+      <span style="color:var(--antique);font-size:.85rem">◆</span>
+      <div class="h-div-line"></div>
+    </div>
+
+    <!-- Date badge -->
+    <div class="h-badge" id="hbadge">
+      <svg width="13" height="13" viewBox="0 0 24 24" stroke="var(--rose)" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Nikah — 29th October 2026</span>
+      <span style="color:rgba(184,92,86,.3)">·</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" stroke="var(--rose)" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Firojpur, Bheldi, Saran</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EVENTS / SAVE THE DATE ═══════ -->
+<section id="events" class="bg-cream">
+  <div class="sec-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eye">Mark Your Calendar</span>
+      <span class="sec-ar">✿ تاریخ یاد رکھیں ✿</span>
+      <h2 class="sec-title">Save The Date</h2>
+      <div class="sep"><div class="sep-l"></div><div class="sep-d"></div><div class="sep-l"></div></div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="cd-row reveal">
+      <div class="cd-unit"><span class="cd-n" id="cdd">--</span><span class="cd-l">Days</span></div>
+      <div class="cd-unit"><span class="cd-n" id="cdh">--</span><span class="cd-l">Hours</span></div>
+      <div class="cd-unit"><span class="cd-n" id="cdm">--</span><span class="cd-l">Minutes</span></div>
+      <div class="cd-unit"><span class="cd-n" id="cds">--</span><span class="cd-l">Seconds</span></div>
+    </div>
+
+    <!-- EVENT CARDS -->
+    <div class="ev-grid">
+
+      <!-- MILAD -->
+      <div class="ev-card" id="ec1">
+        <div class="ev-shimmer"></div>
+        <span class="ev-nbg">01</span>
+        <div class="ev-ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M19 3a2 2 0 0 1-2 2 2 2 0 0 1 2 2 2 2 0 0 1 2-2 2 2 0 0 1-2-2z"/></svg></div>
+        <span class="ev-lbl">Blessed Gathering</span>
+        <span class="ev-ar">میلادِ مبارک</span>
+        <span class="ev-name">Milad</span>
+        <span class="ev-date">27th October 2026</span>
+        <span class="ev-time">Evening — 7:00 PM</span>
+        <div class="ev-bar"></div>
+      </div>
+
+      <!-- BARAT -->
+      <div class="ev-card" id="ec2">
+        <div class="ev-shimmer"></div>
+        <span class="ev-nbg">02</span>
+        <div class="ev-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <span class="ev-lbl">Wedding Procession</span>
+        <span class="ev-ar">بارات</span>
+        <span class="ev-name">Barat</span>
+        <span class="ev-date">29th October 2026</span>
+        <span class="ev-time">Evening — 6:00 PM</span>
+        <div class="ev-bar"></div>
+      </div>
+
+      <!-- NIKAH -->
+      <div class="ev-card nikah" id="ec3">
+        <div class="ev-shimmer"></div>
+        <span class="ev-nbg">03</span>
+        <div class="ev-ico" style="border-color:rgba(184,92,86,.4);background:rgba(184,92,86,.05);">
+          <svg viewBox="0 0 24 24" stroke="var(--rose)"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span class="ev-lbl" style="color:var(--rose)">Sacred Union</span>
+        <span class="ev-ar" style="color:var(--rose)">نکاحِ مبارک</span>
+        <span class="ev-name" style="font-size:clamp(1.4rem,3.2vw,2rem)">Nikah</span>
+        <span class="ev-date">29th October 2026</span>
+        <span class="ev-time">Night — 9:00 PM</span>
+        <span class="ev-venue">📍 Firojpur, Bheldi, Saran</span>
+        <div class="ev-bar"></div>
+      </div>
+
+      <!-- RETURN BARAT -->
+      <div class="ev-card" id="ec4">
+        <div class="ev-shimmer"></div>
+        <span class="ev-nbg">04</span>
+        <div class="ev-ico"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><path d="M21 12H9"/></svg></div>
+        <span class="ev-lbl">Return & Celebration</span>
+        <span class="ev-ar">واپسی بارات</span>
+        <span class="ev-name">Return Barat</span>
+        <span class="ev-date">30th October 2026</span>
+        <span class="ev-time">Details to Follow</span>
+        <div class="ev-bar"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FAMILY SECTION ═══════ -->
+<section id="family" class="bg-ivory">
+  <div class="sec-wrap">
+
+    <!-- Section header -->
+    <div class="sec-head reveal">
+      <span class="sec-eye">With the Blessings of Allah</span>
+      
+      <h2 class="sec-title">Meet The Families</h2>
+      <div class="sep"><div class="sep-l"></div><div class="sep-d"></div><div class="sep-l"></div></div>
+    </div>
+
+    <!-- Blessing text -->
+    <div class="family-top-text" id="famTopText">
+      <span class="ftt-blessing">بِسْمِ ٱللَّٰهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+      <span class="ftt-urdu" dir="rtl">اللہ کی رحمت و برکت کے ساتھ — دو خاندان ایک بندھن میں</span>
+      <span class="ftt-en">Two families — united in love, faith & joy</span>
+    </div>
+
+    <!-- Bride + Groom cards -->
+    <div class="family-grid">
+      <!-- BRIDE -->
+      <div class="fcard fcard-bride" id="fc1">
+        <div class="fcorner tl"></div><div class="fcorner tr"></div>
+        <div class="fcorner bl"></div><div class="fcorner br"></div>
+        <span class="fcard-ico">🌸</span>
+        <span class="fcard-role">✿ The Bride ✿</span>
+        <span class="fcard-urdu">سمی خاتون</span>
+        <span class="fcard-eng">Simmi Khatoon</span>
+        <div class="sep" style="max-width:130px;margin:.4rem auto 1.1rem"><div class="sep-l"></div><div class="sep-d" style="width:4px;height:4px"></div><div class="sep-l"></div></div>
+        <p class="fcard-info">
+          <b>Daughter of</b> Abdul Majid Ansari<br>
+          <b>Granddaughter of</b> Late Anual Haq Ansari
+          <span class="fcard-loc">Firojpur, Bheldi, Saran</span>
+        </p>
+      </div>
+
+      <!-- GROOM -->
+      <div class="fcard" id="fc2">
+        <div class="fcorner tl"></div><div class="fcorner tr"></div>
+        <div class="fcorner bl"></div><div class="fcorner br"></div>
+        <span class="fcard-ico">💍</span>
+        <span class="fcard-role">The Groom</span>
+		<span class="fcard-urdu">معصوم رضا</span>
+        <span class="fcard-eng">Masum Raza</span>
+        <div class="sep" style="max-width:130px;margin:.4rem auto 1.1rem"><div class="sep-l"></div><div class="sep-d" style="width:4px;height:4px"></div><div class="sep-l"></div></div>
+        <p class="fcard-info">
+          <b>Son of</b> Abdul Aziz Ansari<br>
+          <b>Grandson of</b> Late Noor Hasan Ansari<br>
+          <span class="fcard-loc">Basantpur Bangla, Amnour, Saran</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- BRIDE FAMILY CARD -->
+    <div class="bride-fam" id="bfc">
+      <div class="bf-corner tl"></div><div class="bf-corner tr"></div>
+      <div class="bf-corner bl"></div><div class="bf-corner br"></div>
+
+      <div class="sep" style="margin-bottom:1.5rem"><div class="sep-l"></div><span style="color:var(--antique);font-size:.8rem">✿</span><div class="sep-l"></div></div>
+
+      <span class="bf-love">With Utmost Love</span>
+      <span class="bf-welcome">Be Love and Welcome</span>
+      <span class="bf-from">From the Ansari Family</span>
+
+      <!-- Patriarchs -->
+      <div class="patriarch late">Anual Haq Ansari</div>
+      <div class="patriarch main">Abdul Majid Ansari</div>
+      <div class="patriarch">A. Naem Ansari</div>
+      <div class="patriarch">A. Qaum Ansari</div>
+      <div class="patriarch">A. Merajul Ansari</div>
+      <div class="patriarch late">Arsard Ansari</div>
+
+      <hr class="bf-divider">
+
+      <span class="bf-member-lbl">And All Beloved Family Members</span>
+      <div class="names-flex">
+        <span class="n-chip">Parwej</span>
+        <span class="n-chip">Asraf</span>
+        <span class="n-chip">Altaf</span>
+        <span class="n-chip">Aarif</span>
+        <span class="n-chip">Atif</span>
+        <span class="n-chip">Asif</span>
+      </div>
+
+      <div class="sep" style="margin-top:1.8rem"><div class="sep-l"></div><span style="color:rgba(184,92,86,.3);font-size:.75rem">✿</span><div class="sep-l"></div></div>
+      <span class="bf-dua">جزاك الله خيراً — اللهم بارك فيهم</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ QUR'AN & DUA ═══════ -->
+<section id="quran" class="bg-parch">
+  <div class="sec-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eye">Blessed Words of Allah</span>
+      <span class="sec-ar">قرآنی آیات و دعا</span>
+      <h2 class="sec-title">Nikah & Dua</h2>
+      <div class="sep"><div class="sep-l"></div><div class="sep-d"></div><div class="sep-l"></div></div>
+    </div>
+
+    <div class="qframe" id="qf">
+      <div class="qinner">
+        <span class="qar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</span>
+        <span class="qtrans">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them — and He placed between you affection and mercy."</span>
+        <span class="qref">— Surah Ar-Rum 30:21</span>
+      </div>
+    </div>
+
+    <div class="dua-row">
+      <div class="dcard" id="dc1">
+        <span class="dcard-ar">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ</span>
+        <span class="dcard-ur" dir="rtl">اللہ آپ کو برکت دے اور آپ پر رحمت نازل فرمائے</span>
+        <span class="dcard-en">May Allah bless you and shower His blessings upon you</span>
+      </div>
+      <div class="dcard" id="dc2">
+        <span class="dcard-ar">اللَّهُمَّ أَلِّفْ بَيْنَ قُلُوبِهِمَا</span>
+        <span class="dcard-ur" dir="rtl">اے اللہ! ان کے دلوں کو آپس میں ملا دے</span>
+        <span class="dcard-en">O Allah, unite their hearts in love and mercy</span>
+      </div>
+      <div class="dcard" id="dc3">
+        <span class="dcard-ar">وَجَمَعَ بَيْنَهُمَا فِي خَيْرٍ</span>
+        <span class="dcard-ur" dir="rtl">اور انہیں خیر و برکت میں ایک کر دے</span>
+        <span class="dcard-en">And may He unite them both in goodness forever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INVITATION ═══════ -->
+<section id="invitation" class="bg-ivory">
+  <div class="sec-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eye">You Are Cordially Invited</span>
+      <span class="sec-ar">✿ دعوتِ شادی ✿</span>
+      <h2 class="sec-title">Wedding Invitation</h2>
+      <div class="sep"><div class="sep-l"></div><div class="sep-d"></div><div class="sep-l"></div></div>
+    </div>
+
+    <div class="inv-card" id="icard">
+      <div class="igem tl"></div><div class="igem tr"></div>
+      <div class="igem bl"></div><div class="igem br"></div>
+      <span class="inv-ar">أَهْلاً وَسَهْلاً — خوش آمدید</span>
+      <span class="inv-h">Be Love & Welcome</span>
+      <span class="inv-sub">The Ansari Family Joyfully Invites You</span>
+      <div class="sep" style="margin:1rem auto 1.5rem"><div class="sep-l"></div><span style="color:var(--antique);font-size:.8rem">✿</span><div class="sep-l"></div></div>
+      <p class="inv-body">
+        With hearts full of gratitude to Allah ﷻ, we joyfully invite you to celebrate the blessed union of our beloved daughter
+        <strong>Simmi Khatoon</strong> with <strong style="color:var(--brown-mid)">Masum Raza</strong>.
+        Your presence and duas are our greatest honour.
+      </p>
+      <div class="inv-venue">
+        <span class="inv-venue-name">📍 Firojpur, Bheldi, Saran</span>
+        <span class="inv-venue-time">29th October 2026 · Night 9:00 PM · Nikah</span>
+      </div>
+      <div class="sep" style="margin:1.2rem auto"><div class="sep-l"></div><span style="color:rgba(184,92,86,.25);font-size:.75rem">✿</span><div class="sep-l"></div></div>
+      <p style="font-family:var(--ff-cormo);font-style:italic;font-size:clamp(.78rem,1.7vw,.9rem);color:var(--brown-soft);line-height:2">
+        Your blessings will illuminate this sacred day.<br>
+        May Allah accept our prayers and bless this union. آمین
+      </p>
+      <span class="inv-closing">جزاك الله خيراً · اللهم بارك فيهم</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-ar">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>
+  <div class="ft-div">✿ ❋ ✿</div>
+  <span class="ft-names">Simmi Khatoon weds Masum Raza</span>
+  <div class="ft-div" style="font-size:.8rem">◆</div>
+  <span class="ft-sub">October 2026 · Saran, Bihar · Ansari Family</span>
+  <span class="ft-love">Crafted with Love, Dua & Elegance</span>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════ -->
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function cf(){fx+=(mx-fx)*.1;fy+=(my-fy)*.1;cur2.style.left=fx+'px';cur2.style.top=fy+'px';requestAnimationFrame(cf)})();
+
+/* ── LOADER PETALS ── */
+(function spawnLoaderPetals(){
+  const loader=document.getElementById('loader');
+  for(let i=0;i<12;i++){
+    const p=document.createElement('div');
+    p.className='loader-petal';
+    const sz=Math.random()*12+6;
+    p.style.cssText=`width:${sz}px;height:${sz*1.5}px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:rgba(184,92,86,${Math.random()*.35+.1});left:${Math.random()*100}%;animation-duration:${Math.random()*10+8}s;animation-delay:${Math.random()*6}s;`;
+    loader.appendChild(p);
+  }
+})();
+
+/* ── HERO CANVAS — PETALS + GOLD ── */
+const can=document.getElementById('heroCanvas');
+const ctx=can.getContext('2d');
+let W,H,parts=[];
+
+function resize(){
+  W=can.width=can.offsetWidth;
+  H=can.height=can.offsetHeight;
+  buildParts();
+}
+
+function buildParts(){
+  parts=[];
+  // Gold sparkles
+  for(let i=0;i<50;i++){
+    parts.push({type:'g',x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:-(Math.random()*.4+.1),r:Math.random()*1.8+.4,life:Math.random()*Math.PI*2,ls:Math.random()*.02+.008,op:Math.random()*.55+.2});
+  }
+  // Rose petals
+  for(let i=0;i<22;i++){
+    parts.push({type:'p',x:Math.random()*W,y:Math.random()*H+H*.3,vx:(Math.random()-.5)*.55,vy:-(Math.random()*.65+.2),r:Math.random()*5+2.5,rot:Math.random()*Math.PI*2,rots:(Math.random()-.5)*.022,life:Math.random()*Math.PI*2,ls:Math.random()*.012+.005,op:Math.random()*.45+.18});
+  }
+}
+
+function drawCanvasBg(){
+  const g=ctx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#FDF4EA');g.addColorStop(.4,'#F9ECDB');g.addColorStop(.75,'#F4DDD0');g.addColorStop(1,'#FDF7EF');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+}
+
+function loop(){
+  drawCanvasBg();
+  parts.forEach(p=>{
+    p.life+=p.ls;p.x+=p.vx;p.y+=p.vy;
+    if(p.y<-20)p.y=H+20;
+    if(p.x<-20)p.x=W+20;
+    if(p.x>W+20)p.x=-20;
+    if(p.type==='g'){
+      ctx.save();ctx.globalAlpha=p.op*(0.45+0.55*Math.sin(p.life));
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(196,162,74,0.75)';ctx.fill();ctx.restore();
+    } else {
+      p.rot+=p.rots;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      ctx.globalAlpha=p.op*(0.5+0.5*Math.sin(p.life));
+      ctx.beginPath();ctx.ellipse(0,0,p.r,p.r*1.65,0,0,Math.PI*2);
+      const hue=Math.floor(Math.random()*8);
+      ctx.fillStyle=`rgba(${180+hue},${85+hue},${80+hue},0.6)`;ctx.fill();ctx.restore();
+    }
+  });
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize',resize);
+resize();loop();
+
+/* ── WEB AUDIO — Maqam Rast Melody ── */
+let aCtx=null,playing=false,mGain=null,mTimer=null,mIdx=0;
+const mBtn=document.getElementById('musicBtn'),mIco=document.getElementById('mIco');
+
+// Maqam Rast — C D E half-flat F G A B (approximated)
+const SCALE=[261.63,293.66,311.13,349.23,392,440,493.88,523.25,466.16,392,349.23,311.13,293.66,261.63,293.66,349.23,392,440,523.25,587.33,523.25,440,392,311.13,261.63];
+const DSEQ=[.55,.5,.45,.5,.65,.55,.8,.5,.5,.5,.5,.45,.5,.9,.5,.5,.5,.65,.5,.8,.5,.5,.6,.5,1.0];
+
+function tone(freq,vol,dur,type='sine'){
+  if(!aCtx||!playing)return;
+  const t=aCtx.currentTime;
+  const o=aCtx.createOscillator(),e=aCtx.createGain();
+  o.type=type;o.frequency.value=freq;
+  e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(vol,t+.06);
+  e.gain.setValueAtTime(vol*.88,t+dur-.14);e.gain.linearRampToValueAtTime(0,t+dur);
+  o.connect(e);e.connect(mGain);o.start(t);o.stop(t+dur+.08);
+}
+
+function playNxts(){
+  if(!playing)return;
+  const f=SCALE[mIdx%SCALE.length],d=DSEQ[mIdx%DSEQ.length];
+  tone(f,.18,d,'sine');
+  tone(f*1.502,.07,d,'sine'); // perfect fifth harmonic
+  tone(f*2,.04,d,'sine');     // octave
+  if(mIdx%5===0) tone(f/2,.06,d*1.4,'triangle'); // bass
+  if(mIdx%8===0) tone(f*1.25,.04,d*.8,'sine');   // third ornament
+  mIdx++;
+  mTimer=setTimeout(playNxt,d*1000+60);
+}
+
+function startM(){
+  if(!aCtx)aCtx=new(window.AudioContext||window.webkitAudioContext)();
+  if(aCtx.state==='suspended')aCtx.resume();
+  mGain=aCtx.createGain();mGain.gain.value=.3;
+  const cmp=aCtx.createDynamicsCompressor();
+  cmp.threshold.value=-20;cmp.ratio.value=3;cmp.knee.value=6;
+  mGain.connect(cmp);cmp.connect(aCtx.destination);
+  playing=true;playNxt();
+  mIco.innerHTML='<path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><line x1="23" y1="1" x2="1" y2="23" stroke="var(--rose)" stroke-width="1.5"/>';
+  mBtn.style.boxShadow='0 4px 28px rgba(184,92,86,.3)';
+}
+function stopM(){
+  clearTimeout(mTimer);playing=false;
+  if(mGain)mGain.gain.linearRampToValueAtTime(0,aCtx.currentTime+.5);
+  mIco.innerHTML='<path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>';
+  mBtn.style.boxShadow='';
+}
+mBtn.addEventListener('click',()=>playing?stopM():startM());
+
+/* ── LOADER → HERO ── */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    gsap.to('#loader',{opacity:0,duration:.95,ease:'power2.inOut',onComplete:()=>{
+      document.getElementById('loader').style.display='none';
+      heroIn();
+    }});
+  },3000);
+});
+
+/* ── HERO ENTRANCE ── */
+function heroIn(){
+  gsap.set(['#hbride','#hgroom'],{scale:.93});
+  gsap.set('#hurdu',{y:18});
+  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.to('#hbis',     {opacity:1,y:0,duration:1.3})
+    .to('#hbisen',   {opacity:1,duration:.9},'-=.5')
+    .to('#hdiv1',    {opacity:1,duration:.8},'-=.3')
+    .to('#hbride',   {opacity:1,scale:1,duration:1.4},'-=.4')
+    .to('#hweds',    {opacity:1,duration:.8},'-=.7')
+    .to('#hgroom',   {opacity:1,scale:1,duration:1.2},'-=.5')
+    .to('#hurdu',    {opacity:1,y:0,duration:1.1},'-=.4')
+    .to('#hdiv2',    {opacity:1,duration:.7},'-=.3')
+    .to('#hbadge',   {opacity:1,duration:.9},'-=.2');
+}
+
+/* ── SCROLL REVEALS ── */
+document.querySelectorAll('.reveal').forEach(el=>{
+  gsap.fromTo(el,{opacity:0,y:35},{opacity:1,y:0,duration:.95,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 89%',toggleActions:'play none none none'}
+  });
+});
+
+// Family top text
+gsap.to('#famTopText',{opacity:1,y:0,duration:1,ease:'power3.out',
+  scrollTrigger:{trigger:'#famTopText',start:'top 89%'}
+});
+gsap.set('#famTopText',{y:30});
+
+// Family cards
+gsap.fromTo('#fc1',{opacity:0,x:-35},{opacity:1,x:0,duration:1.05,ease:'power3.out',
+  scrollTrigger:{trigger:'#fc1',start:'top 88%'}
+});
+gsap.fromTo('#fc2',{opacity:0,x:35},{opacity:1,x:0,duration:1.05,ease:'power3.out',
+  scrollTrigger:{trigger:'#fc2',start:'top 88%'}
+});
+gsap.fromTo('#bfc',{opacity:0,y:40},{opacity:1,y:0,duration:1.1,ease:'power3.out',
+  scrollTrigger:{trigger:'#bfc',start:'top 88%'}
+});
+
+// Event cards stagger
+['#ec1','#ec2','#ec3','#ec4'].forEach((id,i)=>{
+  gsap.to(id,{opacity:1,y:0,duration:.88,delay:i*.1,ease:'power3.out',
+    scrollTrigger:{trigger:'.ev-grid',start:'top 87%'}
+  });
+});
+
+// Quran frame
+gsap.fromTo('#qf',{opacity:0,scale:.94},{opacity:1,scale:1,duration:1.3,ease:'power2.out',
+  scrollTrigger:{trigger:'#qf',start:'top 89%'}
+});
+
+// Dua cards
+['#dc1','#dc2','#dc3'].forEach((id,i)=>{
+  gsap.fromTo(id,{opacity:0,y:28},{opacity:1,y:0,duration:.85,delay:i*.13,ease:'power2.out',
+    scrollTrigger:{trigger:'.dua-row',start:'top 89%'}
+  });
+});
+
+// Invitation
+gsap.fromTo('#icard',{opacity:0,y:40},{opacity:1,y:0,duration:1.2,ease:'power3.out',
+  scrollTrigger:{trigger:'#icard',start:'top 88%'}
+});
+
+/* ── COUNTDOWN ── */
+const TARGET=new Date('2026-10-29T21:00:00');
+function tick(){
+  const diff=TARGET-new Date(),p=n=>String(Math.max(0,n)).padStart(2,'0');
+  document.getElementById('cdd').textContent=diff<0?'00':p(Math.floor(diff/86400000));
+  document.getElementById('cdh').textContent=diff<0?'00':p(Math.floor(diff%86400000/3600000));
+  document.getElementById('cdm').textContent=diff<0?'00':p(Math.floor(diff%3600000/60000));
+  document.getElementById('cds').textContent=diff<0?'00':p(Math.floor(diff%60000/1000));
+}
+setInterval(tick,1000);tick();
+
+/* ── MOUSE PARALLAX ON HERO ── */
+let px2=0,py2=0;
+document.addEventListener('mousemove',e=>{
+  px2=(e.clientX/window.innerWidth-.5)*10;
+  py2=(e.clientY/window.innerHeight-.5)*10;
+  const hi=document.querySelector('.hero-inner');
+  if(hi) hi.style.transform=`translate(${px2*.45}px,${py2*.45}px)`;
+});
+
+/* ── CARD HOVER RADIAL GLOW ── */
+document.querySelectorAll('.ev-card,.fcard,.dcard,.bride-fam,.inv-card').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width)*100;
+    const y=((e.clientY-r.top)/r.height)*100;
+    el.style.background=`radial-gradient(circle at ${x}% ${y}%,rgba(184,92,86,.1) 0%,rgba(253,247,239,.97) 55%)`;
+  });
+  el.addEventListener('mouseleave',()=>el.style.background='');
+});
+
+/* ── SCROLL PARALLAX ── */
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const hf=document.querySelector('.hero-frame');
+  if(hf) hf.style.transform=`translateY(${sy*.04}px)`;
+});
+</script>
+</body>
+</html>
